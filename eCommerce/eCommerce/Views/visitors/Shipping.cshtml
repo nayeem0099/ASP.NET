@@ -1,0 +1,174 @@
+﻿@using eCommerce.Models;
+@{
+    eCommerceDBEntities shop = new eCommerceDBEntities();
+
+    ViewBag.Title = "Shipping";
+    Layout = "~/Views/_LayoutMain.cshtml";
+}
+
+
+<script type="text/javascript" src="~/Contents/js/jquery.min.js"></script>
+<script type="text/javascript" src="~/Contents/js/jquery.selectboxes.pack.js"></script>
+<section id='content-wrapper'>
+    <div class="content-inner">
+        <div class="content_home">
+            <div class="content">
+
+                <div class="content-in">
+                    <div class="content-lf-3 fnt-1">
+                        <div class="content-lf-top">
+                            <span class="float-left fnt-4">Delivery Address</span>
+                        </div>
+                        <div class="pro-des text-align-justify">Please provide your address accurately so that we can deliver book/cd/dvd to you on time. Click on ‘Continue’ button to proceed the next step to confirm this order.</div>
+                        <div class="order-step-2"></div>
+                       
+                        <div class="cont-order-ship">
+
+                            <form action="" method="post">
+
+                                <div class="order-row">
+                                    <div class="order-row-a">Full Name</div>
+                                    <div class="order-row-b">
+                                        <input name="name" id="name" class="tb-order" />
+                                       
+                                    </div>
+                                </div>
+                                <div class="order-row">
+                                    <div class="order-row-a">Email</div>
+                                    <div class="order-row-b">
+                                        <input name="email" id="email" class="tb-order" />
+                                        
+                                    </div>
+                                </div>
+                                <div class="order-row">
+                                    <div class="order-row-a">Phone</div>
+                                    <div class="order-row-b">
+                                        <input name="phone" id="phone" class="tb-order" />
+                                        
+                                    </div>
+                                </div>
+                                <div class="order-row">
+                                    <div class="order-row-a">Alternative Phone</div>
+                                    <div class="order-row-b">
+                                        <input name="phone2" id="phone2"class="tb-order" />
+                                       
+                                    </div>
+                                </div>
+                                <div class="order-row">
+                                    <div class="order-row-a">Country</div>
+                                    <div class="order-row-b">
+                                        <select id="cnt" onchange="cntChangeHandler();" name="cnt">
+                                            <option value="0">Select Country</option>
+                                            <option value="1">Bangladesh</option>
+                                            <option value="2">India</option>
+                                            <option value="4">USA</option>
+                                            <option value="5">Canada</option>
+                                            <option value="6">Australia</option>
+                                            <option value="7">German</option>
+                                            <option value="8">Netherland</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="order-row" id="divct">
+                                    <div class="order-row-a">City/District</div>
+                                    <div class="order-row-b">
+                                        <select onchange="ctChangeHandler();" id="ct" name="ct"></select>
+                                    </div>
+                                </div>
+                                <div class="order-row" id="divarea">
+                                    <div class="order-row-a">Area/Thana</div>
+                                    <div class="order-row-b">
+                                        <select name="area" id="area">
+                                        </select>
+                                        
+                                    </div>
+                                </div>
+                                <div class="order-row">
+                                    <div class="order-row-a">Delivery Address</div>
+                                    <div class="order-row-b">
+                                        <textarea class="tb-order" id="addr" name="addr"></textarea>
+                                    </div>
+                                </div>
+                                <div class="order-row">
+                                    <div class="order-row-a">&nbsp;</div>
+                                    <div class="order-row-b">
+                                        <div class="gen-div-3">
+
+
+
+                                            <a href="~/Shop/Cart" class="btn-back"></a>
+                                            <input type="submit" class="btn-continue-order" value="Continue.." />
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <script type="text/javascript">
+		$(document).ready(function(){
+			if($('#cnt').val() != 1) {
+    			$('#divct').slideUp(400);
+    			$('#divarea').slideUp(400);
+    		} 
+		});
+
+    	function cntChangeHandler() {
+			if($("#cnt").val()!=null && $("#cnt").val()!=0){
+			    $.getJSON("cts?id=" + $("#cnt").val(), function (data) {
+	    			$("#ct").removeOption(/./);
+	    			$("#area").removeOption(/./);
+	    			$.each(data, function (key, val) {
+	    			    $("#ct").addOption(val.id, val.nm);
+	  			  	});
+	  			  	$('#ct option:first-child').attr('selected', 'selected');
+	  			  	if(data.length > 0) {
+		  			  	$.getJSON("areas?id="+data[0].id, function(data) {
+		  	    			$("#area").removeOption(/./);
+		  	  			  	$.each(data, function(key, val) {
+		  	  				  	$("#area").addOption(val.id, val.nm);
+		  	  			  	});
+		  	  			});
+	  			  	}
+	  			});
+
+	    		if($('#cnt').val() == 1) {
+	    			$('#divct').slideDown(400);
+	    			$('#divarea').slideDown(400);
+	    		}
+	    		else {
+	    			$('#divct').slideUp(400);
+	    			$('#divarea').slideUp(400);
+	    		}
+
+	    	}
+		}
+
+		function ctChangeHandler() {
+			if($("#ct").val()!=null && $("#ct").val()!=0) {
+	    		$.getJSON("areas?id="+$("#ct").val(), function(data) {
+	    			$("#area").removeOption(/./);
+	  			  	$.each(data, function(key, val) {
+	  				  	$("#area").addOption(val.id, val.nm);
+	  			  	});
+	  			});
+	    	}
+		}
+
+
+
+                        </script>
+
+                    </div>
+
+
+                    <!-- /content right -->
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div><!-- content inner div end -->
+</section>
+

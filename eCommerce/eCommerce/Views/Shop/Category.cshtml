@@ -1,0 +1,375 @@
+﻿@using eCommerce.Models;
+@using eCommerce.Logic;
+@model eCommerce.Models.page
+@{
+    eCommerceDBEntities shop = new eCommerceDBEntities();
+    long idn = Model.id;
+
+    int limit = 5;
+    int total = shop.products.Where(prod => prod.parent_id == Model.id).Count();
+    int step = total / limit;
+    int moreStep = 0;
+    if (total % limit != 0)
+    {
+        moreStep = 1;
+    };
+    int currentStep = 0;
+    int btnLimit = 4;
+
+
+}
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/_LayoutMain.cshtml";
+}
+<div class="clearfix">
+</div>
+</div>
+<div class="main-container">
+    <div class="page-content">
+        <div class="container-fluid">
+            <nav class="woocommerce-breadcrumb">
+                <a href="@Url.Action("Index","Shop")">Home</a>
+                <span class="separator">
+                    >
+                </span>
+                <a href="@Url.Action("Index","Shop")">Shop</a>
+                <span class="separator">
+                    >
+                </span>
+                @Html.DisplayFor(model => model.title)
+            </nav>
+        </div>
+        <div class="shop_content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div id="secondary" class="col-xs-12 col-md-2 sidebar-shop">
+                        <!-- <aside id="text-4" class="widget widget_text">
+                        <h3 class="widget-title">
+                        <span>Text Widget</span>
+                        </h3>			<div class="textwidget">enjoy complimentary shipping on orders of $150 or more</div>
+                        </aside> -->
+                        <!-- <aside id="woocommerce_product_tag_cloud-3" class="widget woocommerce widget_product_tag_cloud">
+                        <h3 class="widget-title">
+                        <span>Product Tags</span>
+                        </h3>
+                        <div class="tagcloud">
+                        <a href='http://demo.roadthemes.com/sozo/product-tag/blouse/' class='tag-link-23' title='5 topics' style='font-size: 15pt;'>blouse</a>
+                        <a href='http://demo.roadthemes.com/sozo/product-tag/clothes/' class='tag-link-24' title='1 topic' style='font-size: 8pt;'>clothes</a>
+                        <a href='http://demo.roadthemes.com/sozo/product-tag/fashion/' class='tag-link-25' title='17 topics' style='font-size: 22pt;'>fashion</a>
+                        <a href='http://demo.roadthemes.com/sozo/product-tag/handbag/' class='tag-link-26' title='4 topics' style='font-size: 13.8333333333pt;'>handbag</a>
+                        <a href='http://demo.roadthemes.com/sozo/product-tag/hat/' class='tag-link-27' title='1 topic' style='font-size: 8pt;'>hat</a>
+                        <a href='http://demo.roadthemes.com/sozo/product-tag/laptop/' class='tag-link-29' title='4 topics' style='font-size: 13.8333333333pt;'>laptop</a>
+                        </div>
+                        </aside> -->
+
+                        <aside id="woocommerce_product_categories-3" class="widget woocommerce widget_product_categories">
+                            <h3 class="widget-title">
+                                <span>Categories</span>
+                            </h3>
+                            <ul class="product-categories">
+                                @{
+                                    int count = shop.products.Where(c => c.parent_id == idn).Count();
+                                }
+                                <li class="cat-item cat-item-36">
+                                    <a href="@Url.Action("Category/"+idn,"Shop")">@Html.DisplayFor(model => model.title) </a> <span class="count">(@count)</span>
+                                
+                                </li>
+
+                            </ul>
+                        </aside>
+
+                        <!-- <aside id="woocommerce_price_filter-3" class="widget woocommerce widget_price_filter">
+                        <h3 class="widget-title">
+                        <span>Filter by price</span>
+                        </h3>
+                        <form method="get" action="">
+                        <div class="price_slider_wrapper">
+                        <div class="price_slider" style="display:none;">
+                        </div>
+                        <div class="price_slider_amount">
+                        <input type="text" id="min_price" name="min_price" value="" data-min="45" placeholder="Min price" />
+                        <input type="text" id="max_price" name="max_price" value="" data-max="115" placeholder="Max price" />
+                        <button type="submit" class="button">Filter</button>
+                        <div class="price_label" style="display:none;">
+                        Price: <span class="from">
+                        </span> &mdash; <span class="to">
+                        </span>
+                        </div>
+
+                        <div class="clear">
+                        </div>
+                        </div>
+                        </div>
+                        </form>
+                        </aside> -->
+
+                        <aside id="woocommerce_products-5" class="widget woocommerce widget_products">
+                            <h3 class="widget-title">
+                                <span>Featured Products</span>
+                            </h3>
+                            <ul class="product_list_widget">
+
+                                @{
+                                    var sales_products2 = shop.products.Where(sp => sp.sales_type == 2).Take(10);
+
+                                }
+
+                                @foreach (var sales_product in sales_products2)
+                                {
+
+                                    <li>
+                                        <div class="product-image">
+                                            <a href="@Url.Action("Product/" + sales_product.id, "Shop")" title="@sales_product.name">
+                                                <img width="400" height="400" src="~/Contents/img_upload/@shop.product_image.FirstOrDefault(img => img.product_id == sales_product.id).image" class="attachment-shop_catalog wp-post-image" alt="@sales_product.name" />
+                                            </a>
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="@Url.Action("Product/" + sales_product.id, "Shop")" title="@sales_product.name>">
+                                                <span class="product-title">@sales_product.name</span>
+                                            </a>
+                                            <span class="special-price">
+                                                <span class="amount">TK.@sales_product.price</span>
+                                            </span>
+                                        </div>
+                                    </li>
+
+                                }
+                            </ul>
+                        </aside>
+                    </div>
+                    @{
+                        var product = shop.products.Where(p => p.parent_id == Model.id);
+
+
+                        switch (Request.QueryString["orderby"])
+                        {
+                            case "name_desc":
+                                product = product.OrderByDescending(s => s.name);
+                                break;
+                            case "Date":
+                                product = product.OrderBy(s => s.created);
+                                break;
+                            case "date_desc":
+                                product = product.OrderByDescending(s => s.created);
+                                break;
+                            default:
+                                product = product.OrderByDescending(s => s.id);
+                                break;
+                        }
+
+
+                        try
+                        {
+
+                            if (!String.IsNullOrEmpty(Request.Url.Segments[4]))
+                            {
+                                int start = Convert.ToInt32(Request.Url.Segments[4]);
+                                currentStep = start;
+                                product = product.Skip(start).Take(limit);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            product = product.Skip(0).Take(limit);
+                        }
+
+                    }
+                    <div id="archive-product" class="col-xs-12 col-md-10">
+
+                        <div class="archive-border">
+                            <div class="category-desc sidebar">
+                                <p class="category-image-desc">
+                                    <img src="~/Contents/img_upload/@Model.image" alt="" />
+                                </p>
+                            </div>
+
+                            <div class="shop-products">
+                            </div>
+
+                            <div class="toolbar">
+                                <div class="view-mode">
+                                    <label>View on</label>
+                                    <a href="#" class="grid  active" title="Grid">
+                                        <i class="fa fa-th">
+                                        </i>
+                                    </a>
+                                    <a href="#" class="list " title="List">
+                                        <i class="fa fa-th-list">
+                                        </i>
+                                    </a>
+                                </div>
+                                <p class="woocommerce-result-count">
+                                    Showing all @product.Count() results 
+                                </p>
+                                <form class="woocommerce-ordering hidden-xs" method="get">
+                                    <div class="orderby-wrapper">
+                                        <label>Sort By</label>
+                                        <select name="orderby" class="orderby">
+                                            <option value="menu_order" selected='selected'>Default sorting</option>
+                                            <option value="popularity">Sort by popularity</option>
+                                            <option value="rating">Sort by average rating</option>
+                                            <option value="date">Sort by newness</option>
+                                            <option value="price">Sort by price: low to high</option>
+                                            <option value="price-desc">Sort by price: high to low</option>
+                                        </select>
+                                    </div>
+                                </form>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+
+                           
+
+                            <div class="shop-products products row grid-view sidebar">
+                               
+                                
+                                @foreach (var prod in product) {
+
+
+                                    <div class="item-col col-xs-12 col-sm-3 post-<@prod.id> product type-product status-publish has-post-thumbnail product_cat-furniture product_tag-blouse product_tag-fashion featured shipping-taxable purchasable product-type-simple product-cat-furniture product-tag-blouse product-tag-fashion instock">
+                                        <div class="product-wrapper">
+                                            <div class="quickviewbtn">
+                                                <a class="detail-link quickview fa fa-external-link" data-quick-id="<@prod.id>" href="@Url.Action("Product/" + prod.id, "Shop")" title="@prod.name>">Quick View</a>
+                                            </div>
+                                            <div class="list-col4 ">
+                                                <div class="product-image">
+                                                    <a href="@Url.Action("Product/" + prod.id, "Shop")" title="@prod.name">
+                                                        <img width="400" height="400" src="~/Contents/img_upload/@shop.product_image.OrderBy(pImg => pImg.C_sort).FirstOrDefault(pImg => pImg.product_id == prod.id).image" class="primary_image wp-post-image" alt="68" />
+                                                        <img width="400" height="400" src="~/Contents/img_upload/@shop.product_image.OrderByDescending(pImg => pImg.C_sort).FirstOrDefault(pImg => pImg.product_id == prod.id).image" class="secondary_image" alt="64" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="list-col8 ">
+
+                                                <div class="gridview">
+                                                    <h2 class="product-name">
+                                                        <a href="@Url.Action("Product/" + prod.id, "Shop")">@prod.name</a>
+                                                    </h2>
+                                                    <div class="price-box">
+                                                        <span class="special-price">
+                                                            <span class="amount">TK.@prod.price</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="actions clearfix">
+                                                        <div class="add-to-cart">
+                                                            <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
+
+                                                                <span class="special-price">
+                                                                    <span class="amount">TK.@prod.price</span>
+                                                                </span>
+                                                                <a href="@Url.Action("Product/" + prod.id, "Shop")" rel=" nofollow" data-product_id="@prod.id" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="listview">
+                                                    <h2 class="product-name">
+                                                        <a href="@Url.Action("Product/" + prod.id, "Shop")">@prod.name</a>
+                                                    </h2>
+                                                    <div class="price-box">
+                                                        <span class="special-price">
+                                                            <span class="amount">TK.@prod.price</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-desc">
+                                                        <p>@prod.body</p>
+                                                </div>
+                                                <div class="actions clearfix">
+                                                    <div class="add-to-cart">
+                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
+
+                                                            <span class="special-price">
+                                                                <span class="amount">TK.@prod.price</span>
+                                                            </span>
+                                                            <a href="@Url.Action("Product/" + prod.id, "Shop")" rel="nofollow" data-product_id="@prod.id" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="add-to-links">
+
+                                                        <div class="clear">
+                                                        </div>
+                                                        <div class="quickviewbtn">
+                                                            <a class="detail-link quickview fa fa-external-link" data-quick-id="@prod.id" href="@Url.Action("Product/" + prod.id, "Shop")" title="@prod.name">Quick View</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                                <div class="clearfix">
+                                </div>
+                                @*@if (btnLimit<= step + moreStep)
+                                {
+                                    for (int i = 1; i <= step + moreStep; i++)
+                                    {
+                                        string active = "btn-info";
+                                        if (currentStep == (limit * (i - 1)))
+                                        {
+                                            active = "btn-primary";
+                                        }
+                                        <a href="@Url.Action("Category/"+Model.id+"/"+(limit*(i-1)),"Shop")"><button class="btn @active" value="">@i</button></a>
+                                    }
+
+                                }*@
+                                @{ 
+                                    var pager = new Pagination(total,currentStep/limit+1, limit);
+                                }
+
+                                <!-- pager -->
+                                @if (pager.EndPage > 1)
+                                {
+                                    <ul class="pagination">
+                                        @if (pager.CurrentPage > 1)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("Category/"+Model.id,"Shop")">First</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Category/"+Model.id+"/"+(limit*((pager.CurrentPage - 1)-1)),"Shop")">Previous</a>
+                                            </li>
+                                        }
+
+                                        @for (var page = pager.StartPage; page <= pager.EndPage; page++)
+                                        {
+                                            <li class="@(page == pager.CurrentPage ? "active" : "")">
+                                                <a href="@Url.Action("Category/"+Model.id+"/"+(limit*(page-1)),"Shop")">@page</a>
+                                            </li>
+                                        }
+
+                                        @if (pager.CurrentPage < pager.TotalPages)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("Category/"+Model.id+"/"+(limit*((pager.CurrentPage + 1)-1)),"Shop")">Next</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Category/"+Model.id+"/"+(limit*(pager.TotalPages-1)),"Shop")">Last</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                }	
+                                
+
+                            </div>
+
+                            <div class="toolbar tb-bottom">
+                                
+                                <div class="clearfix">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

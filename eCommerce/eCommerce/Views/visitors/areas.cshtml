@@ -1,0 +1,9 @@
+﻿@using System.Web.Script.Serialization;
+@using eCommerce.Models;
+@{ 
+    JavaScriptSerializer serializer = new JavaScriptSerializer();
+    eCommerceDBEntities shop = new eCommerceDBEntities();
+    int id = Convert.ToInt32(Request.QueryString["id"]);
+    var area = shop.areas.Where(ar => ar.arID == id);
+}
+@serializer.Serialize(area).ToString();

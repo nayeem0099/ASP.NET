@@ -1,0 +1,271 @@
+﻿@using eCommerce.Models;
+@model eCommerce.Models.product
+@{ 
+    eCommerceDBEntities shop = new eCommerceDBEntities();
+    long id = Model.id;
+    var singleImage = shop.product_image.OrderBy(pImg => pImg.C_sort).FirstOrDefault(pImg => pImg.product_id == id);
+}
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/_LayoutMain.cshtml";
+}
+
+
+<div class="product-view">
+
+
+    <div class="container-fluid">
+    </div>
+    <div itemscope id="product-@id" class="post-@id product type-product status-publish has-post-thumbnail product_cat-electronics product_tag-fashion shipping-taxable purchasable product-type-simple product-cat-electronics product-tag-fashion instock">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <div class="single-product-image">
+
+                        <div class="images hasthumb">
+
+                            <a href="~/Contents/img_upload/@singleImage.image" itemprop="image" class="yith_magnifier_zoom woocommerce-main-image" title="9">
+                                <img width="1000" height="1000" src="~/Contents/img_upload/@singleImage.image" class="attachment-shop_single wp-post-image" alt="9" />
+                            </a>	<div class="zoom_in_marker">
+                                <i class="fa fa-expand">
+                                </i>
+                            </div>
+                        </div>
+
+                        <div class="thumbnails slider">
+                            <ul class="yith_magnifier_gallery">
+                                
+                               @{ 
+
+                                   var Images = shop.product_image.OrderBy(pImg => pImg.C_sort).Where(pImg => pImg.product_id == id);
+                               }
+
+                                @foreach (var im in Images)
+                                {
+                                <li class="yith_magnifier_thumbnail first">
+                                    <a href="../../Contents/img_upload/@im.image" class="yith_magnifier_thumbnail first" title="9" data-small="../../Contents/img_upload/@im.image">
+                                        <img width="200" height="200" src="../../Contents/img_upload/@im.image" class="attachment-shop_thumbnail" alt="9" />
+                                    </a>
+                                </li>
+                                }
+                            </ul>
+
+                            <div id="slider-prev">
+                                <i class="fa fa-angle-left">
+                                </i>
+                            </div>
+                            <div id="slider-next">
+                                <i class="fa fa-angle-right">
+                                </i>
+                            </div>
+                        </div>
+
+                        <script type="text/javascript" charset="utf-8">
+var yith_magnifier_options = {
+enableSlider: true,
+
+sliderOptions: {
+responsive: true,
+circular: true,
+infinite: true,
+direction: 'left',	// 'up' for vertical, 'left' for horizontal
+debug: false,
+auto: false,
+align: 'left',
+height: 'auto',
+//height: "100%",	//turn vertical
+//width: 105,	//turn vertical
+prev	: {
+button	: "#slider-prev",
+key		: "left"
+},
+next	: {
+button	: "#slider-next",
+key		: "right"
+},
+//width   : 1018,
+scroll : {
+items     : 1,
+pauseOnHover: true
+},
+items   : {
+//width: 204,
+visible: 4            },
+swipe : {
+onTouch: 	true,
+onMouse:	true
+},
+mousewheel : {
+items: 1
+}
+},
+
+
+showTitle: false,
+zoomWidth: 'auto',
+zoomHeight: 'auto',
+position: 'right',
+//tint: ,
+//tintOpacity: ,
+lensOpacity: 0.5,
+softFocus: false,
+//smoothMove: ,
+adjustY: 0,
+disableRightClick: false,
+phoneBehavior: 'inside',
+loadingLabel: 'Loading...'
+};
+                        </script>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-md-5">
+                    <div class="summary entry-summary single-product-info">
+
+                        <h1 itemprop="name" class="product_title entry-title">
+                            @Html.DisplayFor(model => model.name) 
+                            </ h1 >
+                        <div class="price-box" itemprop="offers" itemscope>
+
+                            <p class="price">
+                                <span class="special-price">
+                                    <span class="amount">TK.@Html.DisplayFor(model => model.price)</span>
+                                </span>
+                            </p>
+
+                            <meta itemprop="price" content="@Html.DisplayFor(model => model.price)" />
+                            <meta itemprop="priceCurrency" content="Taka" />
+                            <link itemprop="availability" href="http://schema.org/InStock" />
+
+                        </div>
+
+                        <div class="short-description" itemprop="description">
+                            <p>@Html.DisplayFor(model => model.body) </p>
+                        </div>
+
+
+                       <form method="post" action="@Url.Action("Cart")" class="cart">
+                        <div class="quantity">
+                            <input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" />
+                            <input type="hidden" name="product_id" value="@id"/>
+                        </div>
+                        <button type="submit" class="single_add_to_cart_button button alt">Add to cart</button>
+                        </form>
+                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-<?php echo $products->id?>">
+                            <div style="clear:both">
+                            </div>
+                            <div class="yith-wcwl-wishlistaddresponse">
+                            </div>
+                        </div>
+
+                        <div class="clear">
+                        </div>
+                </div>
+                <!-- .summary -->
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <div class="widget related_products_widget">
+                    <h3 class="widget-title">
+                        <span>Related Products</span>
+                    </h3>
+
+                    <div class="related products">
+
+                        <div class="shop-products row grid-view">
+                            
+                            @{ 
+                                var related_product = shop.products.Where(p => p.parent_id == Model.parent_id )
+                                                        .Where(p => p.id != Model.id).Take(6);
+                            }
+
+                            
+                            @foreach(var rp in related_product) {
+                           
+
+
+                            <div class="first last  item-col col-xs-12 col-sm-12 post-@rp.id product type-product status-publish has-post-thumbnail product_cat-furniture product_tag-fashion product_tag-handbag shipping-taxable purchasable product-type-simple product-cat-furniture product-tag-fashion product-tag-handbag instock">
+                                <div class="product-wrapper">
+                                    <div class="quickviewbtn">
+                                        <a class="detail-link quickview fa fa-external-link" data-quick-id="@rp.id" href="@Url.Action("Product/"+rp.id,"Shop")" title="@rp.name">Quick View</a>
+                                    </div>
+                                    <div class="list-col4 ">
+                                        <div class="product-image">
+                                            <a href="@Url.Action("Product/"+rp.id,"Shop")" title="@rp.name">
+                                                <img width="400" height="400" src="~/Contents/img_upload/@shop.product_image.OrderBy(pImg => pImg.C_sort).FirstOrDefault(pImg => pImg.product_id == rp.id).image" class="primary_image wp-post-image" alt="68" />
+                                                <img width="400" height="400" src="~/Contents/img_upload/@shop.product_image.OrderByDescending(pImg => pImg.C_sort).FirstOrDefault(pImg => pImg.product_id == rp.id).image" class="secondary_image" alt="64" />
+                                            </a>
+
+                                            <div class="count-down">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="list-col8 ">
+                                        <div class="gridview">
+                                            <h2 class="product-name">
+                                                <a href="@Url.Action("Product/"+rp.id,"Shop")">@rp.name</a>
+                                            </h2>
+                                            <div class="price-box">
+                                                <span class="special-price">
+                                                    <span class="amount">TK.@rp.price</span>
+                                                </span>
+                                            </div>
+                                            <div class="actions clearfix">
+                                                <div class="add-to-cart">
+                                                    <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
+
+                                                        <span class="special-price">
+                                                            <span class="amount">TK.@rp.price</span>
+                                                        </span>
+                                                        <a href="@Url.Action("Product/"+rp.id,"Shop")" rel="nofollow" data-product_id="<?php echo $key->id;?>" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
+                                                    </p>
+                                                </div>
+                                                <div class="add-to-links">
+
+
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="woocommerce-tabs wc-tabs-wrapper">
+            <ul class="tabs wc-tabs">
+                <li class="description_tab">
+                    <a href="#tab-description">Description</a>
+                </li>
+            </ul>
+            <div class="panel entry-content wc-tab" id="tab-description">
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+                <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
+            </div>
+        </div>
+        <meta itemprop="url" content="<?php echo site_url();?>ps/product/<?php echo $products->id;?>" />
+    </div>
+</div>
+<!-- #product-<?php echo $products->id?> -->
+</div>
+</div>
+</div>
+</div>
+<script type='text/javascript' src='/Contents/js/frontend.min.js'></script>
+<script type='text/javascript' src='/Contents/js/yith_magnifier.min.js'></script>

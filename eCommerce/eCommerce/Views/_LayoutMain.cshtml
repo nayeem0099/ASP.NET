@@ -1,0 +1,480 @@
+﻿
+@using eCommerce.Models;
+@using eCommerce.Logic;
+@{
+    eCommerceDBEntities context = new eCommerceDBEntities();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@ViewBag.Title</title>
+@RenderPage("Header.cshtml")
+</head>
+<body class="home page page-id-1860 page-template page-template-page-templates page-template-front-page page-template-page-templatesfront-page-php mmm mega_main_menu-2-1-1 wpb-js-composer js-comp-ver-4.7 vc_responsive">
+<div id="yith-wcwl-popup-message">
+<div id="yith-wcwl-message">
+</div>
+</div>
+<div class="wrapper ">
+<div class="page-wrapper">
+<div class="header-container">
+<div class="header clearfix">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12 col-lg-7 col-lg-push-2 f-logo">
+<div class="logo">
+<a href="/" title="eCommerce" rel="home">
+<h1 style="color:#e34245">eCommerce</h1>
+</a>
+</div>
+
+<div class="horizontal-menu visible-large">
+<div class="visible-large">
+
+<div id="mega_main_menu_first" class="primary primary_style-flat icons-left first-lvl-align-left first-lvl-separator-smooth direction-horizontal fullwidth-disable pushing_content-disable mobile_minimized-disable dropdowns_trigger-hover dropdowns_animation-anim_5 no-logo no-search no-woo_cart no-buddypress responsive-enable coercive_styles-disable indefinite_location_mode-disable language_direction-ltr version-2-1-1 mega_main mega_main_menu">
+<div class="menu_holder">
+<div class="mmm_fullwidth_container">
+</div>
+<!-- class="fullwidth_container" -->
+<div class="menu_inner">
+<span class="nav_logo">
+<a class="mobile_toggle">
+<span class="mobile_button">
+Menu &nbsp;
+<span class="symbol_menu">&equiv;</span>
+<span class="symbol_cross">&#x2573;</span>
+</span>
+<!-- class="mobile_button" -->
+</a>
+</span>
+<!-- /class="nav_logo" -->
+<ul id="mega_main_menu_ul_first" class="mega_main_menu_ul">
+<li id="menu-item-3267" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1860 current_page_item menu-item-has-children first menu-item-3267 default_dropdown default_style drop_to_right submenu_default_width columns1">
+<a href="@Url.Action("Index")" class="item_link  disable_icon" tabindex="1">
+<i class="">
+</i>
+<span class="link_content">
+<span class="link_text">
+Home
+</span>
+</span>
+</a>
+</li>
+<li id="menu-item-3143" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3143 default_dropdown default_style drop_to_right submenu_default_width columns1">
+<a href="#" class="item_link  disable_icon" tabindex="37">
+<i class="">
+</i>
+<span class="link_content">
+<span class="link_text">
+About Us
+</span>
+</span>
+</a>
+</li>
+<li id="menu-item-3250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3250 default_dropdown default_style drop_to_right submenu_default_width columns1">
+<a href="#portfolio/" class="item_link  disable_icon" tabindex="41">
+<i class="">
+</i>
+<span class="link_content">
+<span class="link_text">
+FAQ
+</span>
+</span>
+</a>
+</li>
+<li id="menu-item-3234" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-3234 default_dropdown default_style drop_to_right submenu_default_width columns1">
+<a href="#contact/" class="item_link  disable_icon" tabindex="44">
+<i class="">
+</i>
+<span class="link_content">
+<span class="link_text">
+Contact Us
+</span>
+</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- /class="menu_inner" -->
+</div>
+<!-- /class="menu_holder" -->
+</div>
+<!-- /id="mega_main_menu" -->
+</div>
+</div>
+
+</div>
+
+<div class="col-xs-12 col-lg-2 col-lg-pull-7 visible-large">
+<div class="nav-categories">
+   @{
+       string home = "";
+       string path = HttpContext.Current.Request.Url.AbsolutePath;
+       if (path == "/" || path == "/shop" || path == "/Shop" || path == "/Shop/Index" || path == "/Shop/index" || path == "/shop/index")
+       {
+           home = "show_home";
+       }
+   }
+<div class="categories-menu visible-large @home"> <!--Show home edit plz-->
+<div class="catemenu-toggler">
+<span>Category</span>
+<i class="fa fa-align-left">
+</i>
+</div>
+
+<div id="mega_main_menu" class="categories primary_style-flat icons-left first-lvl-align-left first-lvl-separator-smooth direction-vertical fullwidth-disable pushing_content-disable mobile_minimized-disable dropdowns_trigger-hover dropdowns_animation-anim_2 no-logo no-search no-woo_cart no-buddypress responsive-enable coercive_styles-disable indefinite_location_mode-disable language_direction-ltr version-2-1-1 mega_main mega_main_menu">
+<div class="menu_holder">
+<div class="mmm_fullwidth_container">
+</div>
+<!-- class="fullwidth_container" -->
+<div class="menu_inner">
+<span class="nav_logo">
+<a class="mobile_toggle">
+<span class="mobile_button">
+Menu &nbsp;
+<span class="symbol_menu">&equiv;</span>
+<span class="symbol_cross">&#x2573;</span>
+</span>
+<!-- class="mobile_button" -->
+</a>
+</span>
+<!-- /class="nav_logo" -->
+<ul id="mega_main_menu_ul" class="mega_main_menu_ul">
+@{ 
+var mainMenu = context.pages.Where(p => p.parent_id == 0).ToList();
+}
+@foreach (var key in mainMenu) {
+
+<li id="menu-item-3163" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children first menu-item-3163 default_dropdown default_style drop_to_right submenu_default_width columns1">
+<a href="@Url.Action("Category/"+key.id,"Shop")" class="item_link  with_icon" tabindex="45">
+<i class="im-icon-screen-4">
+</i>
+<span class="link_content">
+<span class="link_text">
+@key.title (@context.products.Where(c => c.parent_id == key.id).Count())
+</span>
+</span>
+</a>
+<ul class="mega_dropdown">
+@{
+var subMenu = context.pages.Where(p => p.parent_id == key.id).ToList();
+}
+@foreach(var subkey in subMenu) { 
+<li id="menu-item-@subkey.id" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-@subkey.id default_dropdown default_style drop_to_right submenu_default_width">
+<a href="@Url.Action("Category/"+subkey.id,"Shop")" class="item_link  disable_icon" tabindex="@subkey.id">
+<i class="">
+</i>
+<span class="link_content">
+<span class="link_text">
+@subkey.title  (@context.products.Where(c => c.parent_id == subkey.id).Count())
+</span>
+</span>
+</a>
+</li>
+}
+</ul>
+
+</li>
+}
+</ul>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="morelesscate">
+<span class="morecate">
+<i class="fa fa-plus">
+</i>More Categories
+</span>
+<span class="lesscate">
+<i class="fa fa-minus">
+</i>Close Menu
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-lg-3">
+<div class="switcher">
+</div>
+<div class="top-menu widget">
+<div class="menu-top-menu-container">
+<ul id="menu-top-menu" class="nav_menu">
+<li id="menu-item-3509" class="menu-item menu-item-type-post_type menu-item-object-page first menu-item-3509">
+<a href="#contact/">Contact</a>
+</li>
+<li id="menu-item-3228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3228">
+<a href="#my-account/">My Account</a>
+</li>
+<li id="menu-item-3232" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3232">
+<a href="#cart/">Shopping Cart</a>
+</li>
+<li id="menu-item-3227" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-3227">
+<a href="#checkout/">Checkout</a>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div class="widget woocommerce widget_shopping_cart">
+<h2 class="widgettitle">Cart</h2>
+<div class="widget_shopping_cart_content">
+</div>
+</div>
+<div class="visible-small mobile-menu">
+<div class="mbmenu-toggler">
+Menu<span class="mbmenu-icon">
+<i class="fa fa-bars">
+</i>
+</span>
+</div>
+<div class="clearfix">
+</div>
+<div class="mobile-menu-container">
+<ul id="menu-horizontal-menu" class="nav-menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1860 current_page_item menu-item-has-children first menu-item-3267">
+<a href="@Url.Action("Index")">Home</a>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3239">
+<a href="<?php echo site_url();?>shop">Shop</a>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3143">
+<a href="#">About Us</a>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3250">
+<a href="#portfolio/">FAQ</a>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-3234">
+<a href="#contact/">Contact Us</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-offset-2 col-xs-10">
+<div class="header-search">
+<div class="cate-toggler">All Categories</div>
+<div class="widget woocommerce widget_product_categories">
+<h2 class="widgettitle">Categories</h2>
+<ul class="product-categories">
+                                    
+@foreach (var key in mainMenu)
+{
+<li class="cat-item cat-item-@key.id">
+<a href="@key.id">@key.title</a>
+</li>
+} 
+
+</ul>
+</div>
+<div class="widget woocommerce widget_product_search">
+<h2 class="widgettitle">Search</h2>
+<form role="search" method="get" id="searchform" action="#">
+<div>
+<input type="text" value="Search product..." name="s" id="ws" placeholder="" />
+<button class="btn btn-primary" type="submit" id="wsearchsubmit">
+<i class="fa fa-search">
+</i>
+</button>
+<input type="hidden" name="post_type" value="product" />
+</div>
+</form>
+<script type="text/javascript">
+jQuery(document).ready(function () {
+jQuery("#ws").focus(function () {
+if (jQuery(this).val() == "Search product...") {
+jQuery(this).val("");
+}
+});
+jQuery("#ws").focusout(function () {
+if (jQuery(this).val() == "") {
+jQuery(this).val("Search product...");
+}
+});
+jQuery("#wsearchsubmit").click(function () {
+if (jQuery("#ws").val() == "Search product..." || jQuery("#ws").val() == "") {
+jQuery("#ws").focus();
+return false;
+}
+});
+});</script>
+</div>
+</div>
+<div class="header-shipping">
+<ul>
+<li>
+<i class="fa fa-envelope-o">
+</i>
+<strong>Email:</strong>
+@context.dashboards.FirstOrDefault(info => info.id == 1).email
+</li>
+<li>
+<i class="fa fa-phone">
+</i>
+<strong>Hotline:</strong>
+@context.dashboards.FirstOrDefault(info => info.id == 1).phone
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="clearfix">
+</div>
+</div>
+<div class="main-container front-page">
+
+<div class="page-content">
+
+<article id="post-1860" class="post-1860 page type-page status-publish hentry">
+<div class="entry-content">
+<div class="vc_row wpb_row vc_row-fluid vc_custom_1442972422047">
+<div class="row-container">
+
+@RenderBody()
+                                
+<div class="footer">
+
+<div class="footer-top">
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-6  col-md-2 col-lg-2">
+<div class="widget widget_menu">
+<h3 class="widget-title">About Heajy</h3>
+<div class="menu-about-heajy-container">
+<ul id="menu-about-heajy" class="nav_menu">
+<li id="menu-item-3204" class="menu-item menu-item-type-custom menu-item-object-custom first menu-item-3204"><a href="#">Company History</a></li>
+<li id="menu-item-3205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3205"><a href="#">Social Responsibility</a></li>
+<li id="menu-item-3206" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3206"><a href="#">Investor Relations</a></li>
+<li id="menu-item-3207" class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-3207"><a href="#">Healijy on Papers</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-sm-6  col-md-2 col-lg-2">
+<div class="widget widget_menu">
+<h3 class="widget-title">Infomation</h3>
+<div class="menu-infomation-container">
+<ul id="menu-infomation" class="nav_menu">
+<li id="menu-item-3231" class="menu-item menu-item-type-post_type menu-item-object-page first menu-item-3231"><a href="#/blog/">Our Blog</a></li>
+<li id="menu-item-3103" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3103"><a href="#">About Our Shop</a></li>
+<li id="menu-item-3104" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3104"><a href="#">Secure Shopping</a></li>
+<li id="menu-item-3105" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3105"><a href="#">Privacy Policy</a></li>
+<li id="menu-item-3132" class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-3132"><a href="#">Delivery infomation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-sm-6  col-md-2 col-lg-2">
+<div class="widget widget_menu">
+<h3 class="widget-title">My Account</h3>
+<div class="menu-my-account-container">
+<ul id="menu-my-account" class="nav_menu">
+<li id="menu-item-3230" class="menu-item menu-item-type-post_type menu-item-object-page first menu-item-3230"><a href="#/my-account/">My Account</a></li>
+<li id="menu-item-3225" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3225"><a href="#/cart/">Shopping cart</a></li>
+<li id="menu-item-3101" class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-3101"><a href="#">Custom Link</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="col-sm-6  col-md-3 col-lg-3">
+<div class="widget widget_contact_us">
+<ul>
+<li><i class="fa fa-phone"></i>PHONE: @context.dashboards.FirstOrDefault(info => info.id==1).phone</li>
+<li><i class="fa fa-truck"></i>FREE SHIPPING ANYWHERE WORLDWIDE</li>
+<li><i class="fa fa-unlock-alt"></i>100% SECURE FOR PAYMENT</li>
+<li><i class="fa fa-headphones"></i>24/24 ONLINE SUPPORT CUSTOME</li>
+</ul>
+</div>
+</div>
+
+<div class="col-sm-6  col-md-3 col-lg-3">
+<div class="widget widget_wysija">
+<h2 class="widgettitle">SEND NEWSLLETTER</h2><div class="widget_wysija_cont">
+<div id="msg-form-newsletter1" class="wysija-msg ajax"></div><form id="form-newsletter1" method="post" action="#wysija" class="widget_wysija">
+<p class="wysija-paragraph">
+
+
+<input type="text" name="wysija[user][email]" class="wysija-input validate[required,custom[email]]" title="Email" placeholder="Email" value="" />
+
+
+
+<span class="abs-req">
+<input type="text" name="wysija[user][abs][email]" class="wysija-input validated[abs][email]" value="" />
+</span>
+
+</p>
+<input class="wysija-submit wysija-submit-field" type="submit" value="Subscribe!" />
+
+<input type="hidden" name="form_id" value="1" />
+<input type="hidden" name="action" value="save" />
+<input type="hidden" name="controller" value="subscribers" />
+<input type="hidden" value="1" name="wysija-page" />
+
+
+<input type="hidden" name="wysija[user_list][list_ids]" value="1" />
+
+</form>
+</div>
+</div>
+<div class="widget-payment">
+<img src="~/Contents/images/payment.png" alt="payment" />
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+
+<div class="widget-copyright">
+COPYRIGHT © 2015 . ALL RIGHTS RESERVED
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+
+<div class="widget widget-social">
+
+<ul class="social-icons">
+    <li>
+    <a class="facebook social-icon" href="https://www.facebook.com/" title="Facebook" target="_blank">
+        <i class="fa fa-facebook"></i>
+        </a>
+    </li>
+    <li>
+    <a class="twitter social-icon" href="https://twitter.com/" title="Twitter" target="_blank">
+        <i class="fa fa-twitter"></i></a></li><li><a class="pinterest social-icon" href="#" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li><li><a class="google-plus social-icon" href="https://plus.google.com/" title="Google-plus" target="_blank"><i class="fa fa-google-plus"></i></a></li><li><a class="dribbble social-icon" href="#" title="Dribbble" target="_blank"><i class="fa fa-dribbble"></i></a></li></ul>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><!-- .page -->
+</div><!-- .wrapper -->
+<!--<div class="road_loading"></div>-->
+<div id="back-top" class="hidden-xs hidden-sm hidden-md"></div>
+@RenderPage("Footer.cshtml")
+</body>
+</html>

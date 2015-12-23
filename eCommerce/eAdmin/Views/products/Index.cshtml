@@ -1,0 +1,136 @@
+﻿@model IEnumerable<eAdmin.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pubdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parent_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.review)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oprice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_view)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_bought)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sales_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pubdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parent_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.review)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oprice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_view)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_bought)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.publisher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sales_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,9 @@
+﻿@using System.Web.Script.Serialization;
+@using eCommerce.Models;
+@{
+    JavaScriptSerializer serializer = new JavaScriptSerializer();
+    eCommerceDBEntities shop = new eCommerceDBEntities();
+    string id = Request.QueryString["id"];
+    var cts = shop.cts.Where(ct => ct.cntId == id);
+}
+@Json.Encode(cts).ToString();

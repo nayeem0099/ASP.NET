@@ -1,0 +1,52 @@
+﻿@model IEnumerable<eAdmin.Models.admin_permissions_profile>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.prof_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_sort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.created)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.prof_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_sort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.created)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.prof_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.prof_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.prof_id })
+        </td>
+    </tr>
+}
+
+</table>

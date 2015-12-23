@@ -1,0 +1,163 @@
+﻿@model eAdmin.Models.product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pubdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pubdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parent_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parent_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.review)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.review)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.discount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oprice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_view)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_view)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_bought)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_bought)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.publisher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.publisher)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sales_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sales_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

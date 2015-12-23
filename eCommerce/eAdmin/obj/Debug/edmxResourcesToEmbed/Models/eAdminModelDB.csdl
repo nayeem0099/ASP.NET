@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eAdminDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admin_ci_sessions">
+    <Key>
+      <PropertyRef Name="session_id" />
+    </Key>
+    <Property Name="session_id" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_agent" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_activity" Type="Int64" Nullable="false" />
+    <Property Name="user_data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="admin_page">
+    <Key>
+      <PropertyRef Name="ap_id" />
+    </Key>
+    <Property Name="ap_id" Type="Int32" Nullable="false" />
+    <Property Name="ap_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_fa_icon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_view_slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_view_link" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_add_slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_add_link" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_edit_slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_edit_link" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_delete_slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_delete_link" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C_sort" Type="Int32" Nullable="false" />
+    <Property Name="C_parent_id" Type="Int32" Nullable="false" />
+    <Property Name="modified" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="admin_permissions">
+    <Key>
+      <PropertyRef Name="perm_id" />
+    </Key>
+    <Property Name="perm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="perm_profile" Type="Int32" Nullable="false" />
+    <Property Name="perm_page" Type="Int32" Nullable="false" />
+    <Property Name="perm_view" Type="Int32" Nullable="false" />
+    <Property Name="perm_add" Type="Int32" Nullable="false" />
+    <Property Name="perm_edit" Type="Int32" Nullable="false" />
+    <Property Name="perm_delete" Type="Int32" Nullable="false" />
+    <Property Name="perm_all" Type="Int32" Nullable="false" />
+    <Property Name="modified" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="admin_permissions_profile">
+    <Key>
+      <PropertyRef Name="prof_id" />
+    </Key>
+    <Property Name="prof_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prof_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C_sort" Type="Int32" Nullable="false" />
+    <Property Name="modified" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nmBn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="arID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="banner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="image_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ord" Type="Int32" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ci_sessions">
+    <Key>
+      <PropertyRef Name="session_id" />
+    </Key>
+    <Property Name="session_id" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_agent" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_activity" Type="Int64" Nullable="false" />
+    <Property Name="user_data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nmBn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cntId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dashboard">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="customer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="return_policy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="how" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="faq" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="background" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="header" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fa_icon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order_list">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order_num">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="visitor_id" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ptype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mtype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cnt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ct" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="addr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="total" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="page">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_sort" Type="Int32" Nullable="false" />
+    <Property Name="topic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="parent_id" Type="Int64" Nullable="false" />
+    <Property Name="background_color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="body_sort" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="C_sort" Type="Int32" Nullable="false" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="pubdate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="parent_id" Type="Int32" Nullable="false" />
+    <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="review" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="discount" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="oprice" Type="Int32" Nullable="false" />
+    <Property Name="sale" Type="Int32" Nullable="false" />
+    <Property Name="C_view" Type="Int32" Nullable="false" />
+    <Property Name="C_bought" Type="Int32" Nullable="false" />
+    <Property Name="publisher" Type="Int32" Nullable="false" />
+    <Property Name="sales_type" Type="Int32" Nullable="false" />
+    <Property Name="C_status" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="slide_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="image" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_sort" Type="Int32" Nullable="false" />
+    <Property Name="slider_num" Type="Int32" Nullable="false" />
+    <Property Name="title1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="title2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="auth_level" Type="Int32" Nullable="false" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modified" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="visitor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="108" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ip" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="modified" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="active" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="MSSsmaDmNCKeyColumn">
+    <Key>
+      <PropertyRef Name="object_id" />
+      <PropertyRef Name="key_name" />
+      <PropertyRef Name="key_type" />
+      <PropertyRef Name="key_column_id" />
+    </Key>
+    <Property Name="object_id" Type="Int32" Nullable="false" />
+    <Property Name="key_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="key_type" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="key_column_id" Type="Int32" Nullable="false" />
+    <Property Name="index_column_id" Type="Int32" />
+    <Property Name="is_disabled" Type="Boolean" />
+    <Property Name="referenced_object_id" Type="Int32" />
+    <Property Name="delete_referential_action" Type="Byte" />
+    <Property Name="update_referential_action" Type="Byte" />
+    <Property Name="is_not_for_replication" Type="Boolean" />
+    <Property Name="is_not_trusted" Type="Boolean" />
+    <Property Name="referenced_column_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MSSsmaDmTable">
+    <Key>
+      <PropertyRef Name="object_id" />
+    </Key>
+    <Property Name="object_id" Type="Int32" Nullable="false" />
+    <Property Name="schema_id" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Byte" />
+    <Property Name="dm_start_time" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="eAdminDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admin_ci_sessions" EntityType="Self.admin_ci_sessions" />
+    <EntitySet Name="admin_page" EntityType="Self.admin_page" />
+    <EntitySet Name="admin_permissions" EntityType="Self.admin_permissions" />
+    <EntitySet Name="admin_permissions_profile" EntityType="Self.admin_permissions_profile" />
+    <EntitySet Name="areas" EntityType="Self.area" />
+    <EntitySet Name="banners" EntityType="Self.banner" />
+    <EntitySet Name="brands" EntityType="Self.brand" />
+    <EntitySet Name="ci_sessions" EntityType="Self.ci_sessions" />
+    <EntitySet Name="cts" EntityType="Self.ct" />
+    <EntitySet Name="dashboards" EntityType="Self.dashboard" />
+    <EntitySet Name="fa_icon" EntityType="Self.fa_icon" />
+    <EntitySet Name="order_list" EntityType="Self.order_list" />
+    <EntitySet Name="order_num" EntityType="Self.order_num" />
+    <EntitySet Name="pages" EntityType="Self.page" />
+    <EntitySet Name="product_image" EntityType="Self.product_image" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="slide_image" EntityType="Self.slide_image" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="visitors" EntityType="Self.visitor" />
+    <EntitySet Name="MSSsmaDmNCKeyColumns" EntityType="Self.MSSsmaDmNCKeyColumn" />
+    <EntitySet Name="MSSsmaDmTables" EntityType="Self.MSSsmaDmTable" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,82 @@
+﻿@using eAdmin.Models;
+@{
+     eAdminDBEntities admin = new eAdminDBEntities();
+    Session["id"] = 7;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderPage("Header.cshtml")
+</head>
+<body>
+    <div id="container">
+        <header id="header" class="navbar navbar-static-top">
+            <div class="navbar-header">
+                <a type="button" id="button-menu" class="pull-left">
+                    <i class="fa fa-dedent fa-lg">
+                    </i>
+                </a>
+                <a href="" class="navbar-brand">
+                    <img src="~/Contents/image/logo.png" style="width: 35px;" alt="KJHProgrammer" title="KJHProgrammer">
+                </a>
+            </div>
+            <!-- <span id="rtime" style="color:#fff"></span> -->
+            <ul class="nav pull-right">
+                <script>
+// setInterval(function(){
+//     document.getElementById("rtime").innerHTML = (new Date()).toLocaleString();
+// }, 1000);
+// setInterval();
+                </script>
+
+                <li>
+                    <a href="<?php echo site_url('user/logout'); ?>">
+                        <span class="hidden-xs hidden-sm hidden-md">
+                            Logout
+                        </span>
+                        <i class="fa fa-sign-out fa-lg">
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </header>
+        <nav class="active" id="column-left">
+            <ul id="menu">
+                
+                @{
+                    long b = Convert.ToInt32(Session["id"].ToString());
+                    var user = admin.users.SingleOrDefault(u => u.id == b);
+                    var permission = admin.admin_permissions.Where(a => a.perm_profile == user.auth_level)
+                                                               .Where(a => a.perm_view == 1).ToList();
+                    List<long> pagesId = new List<long> { };
+                    
+                    foreach (var setId in permission)
+                    {
+                        pagesId.Add(setId.perm_page);
+                        
+                    }
+
+                    var pages = admin.admin_page.Where(a => pagesId.Contains(a.ap_id)).OrderBy(a=> a.C_sort);
+                    }
+                    
+                    
+                    @foreach (var setPage in pages)
+                    {
+                        
+                <li style="box-shadow: 0px 0px 20px #004EA8;" id="@Html.Raw(setPage.ap_name)"><a href="@Html.Raw(setPage.ap_view_link)"> @Html.Raw(setPage.ap_fa_icon)<span>@Html.Raw(setPage.ap_name)</span></a></li>
+                    } 
+            </ul>
+
+        </nav>
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+@RenderPage("Footer.cshtml")
+</html>

@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eAdminDBModelStoreContainer" CdmEntityContainer="eAdminDBEntities">
+    <EntitySetMapping Name="admin_ci_sessions">
+      <EntityTypeMapping TypeName="eAdminDBModel.admin_ci_sessions">
+        <MappingFragment StoreEntitySet="admin_ci_sessions">
+          <ScalarProperty Name="session_id" ColumnName="session_id" />
+          <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+          <ScalarProperty Name="user_agent" ColumnName="user_agent" />
+          <ScalarProperty Name="last_activity" ColumnName="last_activity" />
+          <ScalarProperty Name="user_data" ColumnName="user_data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admin_page">
+      <EntityTypeMapping TypeName="eAdminDBModel.admin_page">
+        <MappingFragment StoreEntitySet="admin_page">
+          <ScalarProperty Name="ap_id" ColumnName="ap_id" />
+          <ScalarProperty Name="ap_name" ColumnName="ap_name" />
+          <ScalarProperty Name="ap_fa_icon" ColumnName="ap_fa_icon" />
+          <ScalarProperty Name="ap_view_slug" ColumnName="ap_view_slug" />
+          <ScalarProperty Name="ap_view_link" ColumnName="ap_view_link" />
+          <ScalarProperty Name="ap_add_slug" ColumnName="ap_add_slug" />
+          <ScalarProperty Name="ap_add_link" ColumnName="ap_add_link" />
+          <ScalarProperty Name="ap_edit_slug" ColumnName="ap_edit_slug" />
+          <ScalarProperty Name="ap_edit_link" ColumnName="ap_edit_link" />
+          <ScalarProperty Name="ap_delete_slug" ColumnName="ap_delete_slug" />
+          <ScalarProperty Name="ap_delete_link" ColumnName="ap_delete_link" />
+          <ScalarProperty Name="C_sort" ColumnName="_sort" />
+          <ScalarProperty Name="C_parent_id" ColumnName="_parent_id" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="created" ColumnName="created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admin_permissions">
+      <EntityTypeMapping TypeName="eAdminDBModel.admin_permissions">
+        <MappingFragment StoreEntitySet="admin_permissions">
+          <ScalarProperty Name="perm_id" ColumnName="perm_id" />
+          <ScalarProperty Name="perm_profile" ColumnName="perm_profile" />
+          <ScalarProperty Name="perm_page" ColumnName="perm_page" />
+          <ScalarProperty Name="perm_view" ColumnName="perm_view" />
+          <ScalarProperty Name="perm_add" ColumnName="perm_add" />
+          <ScalarProperty Name="perm_edit" ColumnName="perm_edit" />
+          <ScalarProperty Name="perm_delete" ColumnName="perm_delete" />
+          <ScalarProperty Name="perm_all" ColumnName="perm_all" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="created" ColumnName="created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admin_permissions_profile">
+      <EntityTypeMapping TypeName="eAdminDBModel.admin_permissions_profile">
+        <MappingFragment StoreEntitySet="admin_permissions_profile">
+          <ScalarProperty Name="prof_id" ColumnName="prof_id" />
+          <ScalarProperty Name="prof_name" ColumnName="prof_name" />
+          <ScalarProperty Name="C_sort" ColumnName="_sort" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="created" ColumnName="created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="areas">
+      <EntityTypeMapping TypeName="eAdminDBModel.area">
+        <MappingFragment StoreEntitySet="areas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nm" ColumnName="nm" />
+          <ScalarProperty Name="nmBn" ColumnName="nmBn" />
+          <ScalarProperty Name="arID" ColumnName="arID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="banners">
+      <EntityTypeMapping TypeName="eAdminDBModel.banner">
+        <MappingFragment StoreEntitySet="banner">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="brands">
+      <EntityTypeMapping TypeName="eAdminDBModel.brand">
+        <MappingFragment StoreEntitySet="brand">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="image_name" ColumnName="image_name" />
+          <ScalarProperty Name="ord" ColumnName="ord" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ci_sessions">
+      <EntityTypeMapping TypeName="eAdminDBModel.ci_sessions">
+        <MappingFragment StoreEntitySet="ci_sessions">
+          <ScalarProperty Name="session_id" ColumnName="session_id" />
+          <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+          <ScalarProperty Name="user_agent" ColumnName="user_agent" />
+          <ScalarProperty Name="last_activity" ColumnName="last_activity" />
+          <ScalarProperty Name="user_data" ColumnName="user_data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cts">
+      <EntityTypeMapping TypeName="eAdminDBModel.ct">
+        <MappingFragment StoreEntitySet="cts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nm" ColumnName="nm" />
+          <ScalarProperty Name="nmBn" ColumnName="nmBn" />
+          <ScalarProperty Name="cd" ColumnName="cd" />
+          <ScalarProperty Name="cntId" ColumnName="cntId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dashboards">
+      <EntityTypeMapping TypeName="eAdminDBModel.dashboard">
+        <MappingFragment StoreEntitySet="dashboard">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="about" ColumnName="about" />
+          <ScalarProperty Name="customer" ColumnName="customer" />
+          <ScalarProperty Name="return_policy" ColumnName="return_policy" />
+          <ScalarProperty Name="how" ColumnName="how" />
+          <ScalarProperty Name="faq" ColumnName="faq" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="background" ColumnName="background" />
+          <ScalarProperty Name="header" ColumnName="header" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fa_icon">
+      <EntityTypeMapping TypeName="eAdminDBModel.fa_icon">
+        <MappingFragment StoreEntitySet="fa_icon">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_list">
+      <EntityTypeMapping TypeName="eAdminDBModel.order_list">
+        <MappingFragment StoreEntitySet="order_list">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_num">
+      <EntityTypeMapping TypeName="eAdminDBModel.order_num">
+        <MappingFragment StoreEntitySet="order_num">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="visitor_id" ColumnName="visitor_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="ptype" ColumnName="ptype" />
+          <ScalarProperty Name="mtype" ColumnName="mtype" />
+          <ScalarProperty Name="cnt" ColumnName="cnt" />
+          <ScalarProperty Name="ct" ColumnName="ct" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="addr" ColumnName="addr" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="phone2" ColumnName="phone2" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pages">
+      <EntityTypeMapping TypeName="eAdminDBModel.page">
+        <MappingFragment StoreEntitySet="pages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="C_sort" ColumnName="_sort" />
+          <ScalarProperty Name="topic" ColumnName="topic" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="background_color" ColumnName="background_color" />
+          <ScalarProperty Name="body_sort" ColumnName="body_sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_image">
+      <EntityTypeMapping TypeName="eAdminDBModel.product_image">
+        <MappingFragment StoreEntitySet="product_image">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="C_sort" ColumnName="_sort" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="eAdminDBModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="pubdate" ColumnName="pubdate" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="review" ColumnName="review" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="oprice" ColumnName="oprice" />
+          <ScalarProperty Name="sale" ColumnName="sale" />
+          <ScalarProperty Name="C_view" ColumnName="_view" />
+          <ScalarProperty Name="C_bought" ColumnName="_bought" />
+          <ScalarProperty Name="publisher" ColumnName="publisher" />
+          <ScalarProperty Name="sales_type" ColumnName="sales_type" />
+          <ScalarProperty Name="C_status" ColumnName="_status" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="slide_image">
+      <EntityTypeMapping TypeName="eAdminDBModel.slide_image">
+        <MappingFragment StoreEntitySet="slide_image">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="C_sort" ColumnName="_sort" />
+          <ScalarProperty Name="slider_num" ColumnName="slider_num" />
+          <ScalarProperty Name="title1" ColumnName="title1" />
+          <ScalarProperty Name="title2" ColumnName="title2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="eAdminDBModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="auth_level" ColumnName="auth_level" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="visitors">
+      <EntityTypeMapping TypeName="eAdminDBModel.visitor">
+        <MappingFragment StoreEntitySet="visitor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MSSsmaDmNCKeyColumns">
+      <EntityTypeMapping TypeName="eAdminDBModel.MSSsmaDmNCKeyColumn">
+        <MappingFragment StoreEntitySet="MSSsmaDmNCKeyColumns">
+          <ScalarProperty Name="object_id" ColumnName="object_id" />
+          <ScalarProperty Name="key_name" ColumnName="key_name" />
+          <ScalarProperty Name="key_type" ColumnName="key_type" />
+          <ScalarProperty Name="key_column_id" ColumnName="key_column_id" />
+          <ScalarProperty Name="index_column_id" ColumnName="index_column_id" />
+          <ScalarProperty Name="is_disabled" ColumnName="is_disabled" />
+          <ScalarProperty Name="referenced_object_id" ColumnName="referenced_object_id" />
+          <ScalarProperty Name="delete_referential_action" ColumnName="delete_referential_action" />
+          <ScalarProperty Name="update_referential_action" ColumnName="update_referential_action" />
+          <ScalarProperty Name="is_not_for_replication" ColumnName="is_not_for_replication" />
+          <ScalarProperty Name="is_not_trusted" ColumnName="is_not_trusted" />
+          <ScalarProperty Name="referenced_column_id" ColumnName="referenced_column_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MSSsmaDmTables">
+      <EntityTypeMapping TypeName="eAdminDBModel.MSSsmaDmTable">
+        <MappingFragment StoreEntitySet="MSSsmaDmTables">
+          <ScalarProperty Name="object_id" ColumnName="object_id" />
+          <ScalarProperty Name="schema_id" ColumnName="schema_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="dm_start_time" ColumnName="dm_start_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

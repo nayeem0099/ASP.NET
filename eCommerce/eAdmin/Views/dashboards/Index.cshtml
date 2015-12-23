@@ -1,0 +1,308 @@
+﻿@model IEnumerable<eAdmin.Models.dashboard>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumb">
+                <li><a href="http://demo.opencart.com/admin/index.php?route=common/dashboard&amp;token=ac72696a0ffd0fdf966999cbef4e717b">Home</a></li>
+                <li><a href="http://demo.opencart.com/admin/index.php?route=common/dashboard&amp;token=ac72696a0ffd0fdf966999cbef4e717b">Dashboard</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">
+                        Total Orders <span class="pull-right">
+                            <i class="fa fa-caret-up"></i>
+                            100%
+                        </span>
+                    </div>
+                    <div class="tile-body">
+                        <i class="fa fa-shopping-cart"></i>
+                        <h2 class="pull-right">1.7K</h2>
+                    </div>
+                    <div class="tile-footer"><a href="http://demo.opencart.com/admin/index.php?route=sale/order&amp;token=ac72696a0ffd0fdf966999cbef4e717b">View more...</a></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">
+                        Total Sales <span class="pull-right">
+                            <i class="fa fa-caret-up"></i>
+                            100%
+                        </span>
+                    </div>
+                    <div class="tile-body">
+                        <i class="fa fa-credit-card"></i>
+                        <h2 class="pull-right">17.8M</h2>
+                    </div>
+                    <div class="tile-footer"><a href="http://demo.opencart.com/admin/index.php?route=sale/order&amp;token=ac72696a0ffd0fdf966999cbef4e717b">View more...</a></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">
+                        Total Customers <span class="pull-right">
+                            <i class="fa fa-caret-up"></i>
+                            38%
+                        </span>
+                    </div>
+                    <div class="tile-body">
+                        <i class="fa fa-user"></i>
+                        <h2 class="pull-right">4.5K</h2>
+                    </div>
+                    <div class="tile-footer"><a href="http://demo.opencart.com/admin/index.php?route=sale/customer&amp;token=ac72696a0ffd0fdf966999cbef4e717b">View more...</a></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">People Online</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">0</h2>
+                    </div>
+                    <div class="tile-footer"><a href="http://demo.opencart.com/admin/index.php?route=report/customer_online&amp;token=ac72696a0ffd0fdf966999cbef4e717b">View more...</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sx-12 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-eye"></i> World Map</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="vmap" style="width: 100%; height: 260px;"></div>
+                    </div>
+                </div>
+                <link type="text/css" href="view/javascript/jquery/jqvmap/jqvmap.css" rel="stylesheet" media="screen" />
+                <script type="text/javascript" src="view/javascript/jquery/jqvmap/jquery.vmap.js"></script>
+                <script type="text/javascript" src="view/javascript/jquery/jqvmap/maps/jquery.vmap.world.js"></script>
+                <script type="text/javascript">
+<!--
+$(document).ready(function() {
+	$.ajax({
+		url: 'index.php?route=dashboard/map/map&token=ac72696a0ffd0fdf966999cbef4e717b',
+		dataType: 'json',
+		success: function(json) {
+			data = [];
+
+			for (i in json) {
+				data[i] = json[i]['total'];
+			}
+
+			$('#vmap').vectorMap({
+				map: 'world_en',
+				backgroundColor: '#FFFFFF',
+				borderColor: '#FFFFFF',
+				color: '#9FD5F1',
+				hoverOpacity: 0.7,
+				selectedColor: '#666666',
+				enableZoom: true,
+				showTooltip: true,
+				values: data,
+				normalizeFunction: 'polynomial',
+				onLabelShow: function(event, label, code) {
+					if (json[code]) {
+						label.html('<strong>' + label.text() + '</strong><br />' + 'Orders ' + json[code]['total'] + '<br />' + 'Sales ' + json[code]['amount']);
+					}
+				}
+			});
+		},
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+	});
+});
+//--></script>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sx-12 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="pull-right">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-calendar"></i> <i class="caret"></i></a>
+                            <ul id="range" class="dropdown-menu dropdown-menu-right">
+                                <li><a href="day">Today</a></li>
+                                <li><a href="week">Week</a></li>
+                                <li class="active"><a href="month">Month</a></li>
+                                <li><a href="year">Year</a></li>
+                            </ul>
+                        </div>
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Sales Analytics</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="chart-sale" style="width: 100%; height: 260px;"></div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="~/Contents/js/jquery.flot.js"></script>
+                <script type="text/javascript" src="~/Contents/js/jquery.flot.resize.min.js"></script>
+                <script type="text/javascript">
+<!--
+$('#range a').on('click', function(e) {
+	e.preventDefault();
+
+	$(this).parent().parent().find('li').removeClass('active');
+
+	$(this).parent().addClass('active');
+
+	$.ajax({
+		type: 'get',
+		url: 'index.php?route=dashboard/chart/chart&token=ac72696a0ffd0fdf966999cbef4e717b&range=' + $(this).attr('href'),
+		dataType: 'json',
+		success: function(json) {
+			var option = {
+				shadowSize: 0,
+				colors: ['#9FD5F1', '#1065D2'],
+				bars: {
+					show: true,
+					fill: true,
+					lineWidth: 1
+				},
+				grid: {
+					backgroundColor: '#FFFFFF',
+					hoverable: true
+				},
+				points: {
+					show: false
+				},
+				xaxis: {
+					show: true,
+            		ticks: json['xaxis']
+				}
+			}
+
+			$.plot('#chart-sale', [json['order'], json['customer']], option);
+
+			$('#chart-sale').bind('plothover', function(event, pos, item) {
+				$('.tooltip').remove();
+
+				if (item) {
+					$('<div id="tooltip" class="tooltip top in"><div class="tooltip-arrow"></div><div class="tooltip-inner">' + item.datapoint[1].toFixed(2) + '</div></div>').prependTo('body');
+
+					$('#tooltip').css({
+						position: 'absolute',
+						left: item.pageX - ($('#tooltip').outerWidth() / 2),
+						top: item.pageY - $('#tooltip').outerHeight(),
+						pointer: 'cusror'
+					}).fadeIn('slow');
+
+					$('#chart-sale').css('cursor', 'pointer');
+			  	} else {
+					$('#chart-sale').css('cursor', 'auto');
+				}
+			});
+		},
+        error: function(xhr, ajaxOptions, thrownError) {
+           alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+	});
+});
+
+$('#range .active a').trigger('click');
+//--></script>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12 col-sx-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-calendar"></i> Recent Activity</h3>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="http://demo.opencart.com/admin/index.php?route=sale/customer/edit&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;customer_id=4489">vish kusah</a> registered a new account.<br />
+                            <small class="text-muted"><i class="fa fa-clock-o"></i> 23/12/2015 07:32:19</small>
+                        </li>
+                        <li class="list-group-item">
+                            Ahmet Mehmet created a <a href="http://demo.opencart.com/admin/index.php?route=sale/order/info&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;order_id=2284">new order</a>.<br />
+                            <small class="text-muted"><i class="fa fa-clock-o"></i> 23/12/2015 06:09:29</small>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://demo.opencart.com/admin/index.php?route=sale/customer/edit&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;customer_id=4488">Test 1</a> registered a new account.<br />
+                            <small class="text-muted"><i class="fa fa-clock-o"></i> 23/12/2015 02:46:16</small>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://demo.opencart.com/admin/index.php?route=sale/customer/edit&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;customer_id=4487">fgsdfg dfgdfsg</a> registered a new account.<br />
+                            <small class="text-muted"><i class="fa fa-clock-o"></i> 23/12/2015 00:21:50</small>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://demo.opencart.com/admin/index.php?route=sale/customer/edit&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;customer_id=4486">zoyac pvt</a> registered a new account.<br />
+                            <small class="text-muted"><i class="fa fa-clock-o"></i> 22/12/2015 23:01:48</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-12 col-sm-12 col-sx-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-shopping-cart"></i> Latest Orders</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td class="text-right">Order ID</td>
+                                    <td>Customer</td>
+                                    <td>Status</td>
+                                    <td>Date Added</td>
+                                    <td class="text-right">Total</td>
+                                    <td class="text-right">Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">2284</td>
+                                    <td>Ahmet Mehmet</td>
+                                    <td>Pending</td>
+                                    <td>23/12/2015</td>
+                                    <td class="text-right">82.38€</td>
+                                    <td class="text-right"><a href="http://demo.opencart.com/admin/index.php?route=sale/order/info&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;order_id=2284" data-toggle="tooltip" title="View" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">2283</td>
+                                    <td>gggg ggg</td>
+                                    <td>Pending</td>
+                                    <td>22/12/2015</td>
+                                    <td class="text-right">$130.00</td>
+                                    <td class="text-right"><a href="http://demo.opencart.com/admin/index.php?route=sale/order/info&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;order_id=2283" data-toggle="tooltip" title="View" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">2282</td>
+                                    <td>Geo George</td>
+                                    <td>Pending</td>
+                                    <td>22/12/2015</td>
+                                    <td class="text-right">$105.00</td>
+                                    <td class="text-right"><a href="http://demo.opencart.com/admin/index.php?route=sale/order/info&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;order_id=2282" data-toggle="tooltip" title="View" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">2280</td>
+                                    <td>Developer Developer</td>
+                                    <td>Pending</td>
+                                    <td>22/12/2015</td>
+                                    <td class="text-right">$105.00</td>
+                                    <td class="text-right"><a href="http://demo.opencart.com/admin/index.php?route=sale/order/info&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;order_id=2280" data-toggle="tooltip" title="View" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">2278</td>
+                                    <td>aaa hhh</td>
+                                    <td>Pending</td>
+                                    <td>20/12/2015</td>
+                                    <td class="text-right">$130.00</td>
+                                    <td class="text-right"><a href="http://demo.opencart.com/admin/index.php?route=sale/order/info&amp;token=ac72696a0ffd0fdf966999cbef4e717b&amp;order_id=2278" data-toggle="tooltip" title="View" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+</div>
+</div>
+</div>
+</div>

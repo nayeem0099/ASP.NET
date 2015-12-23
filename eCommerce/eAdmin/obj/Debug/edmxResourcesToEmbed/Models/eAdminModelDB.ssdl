@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eAdminDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin_ci_sessions">
+    <Key>
+      <PropertyRef Name="session_id" />
+    </Key>
+    <Property Name="session_id" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="user_agent" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="last_activity" Type="bigint" Nullable="false" />
+    <Property Name="user_data" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="admin_page">
+    <Key>
+      <PropertyRef Name="ap_id" />
+    </Key>
+    <Property Name="ap_id" Type="int" Nullable="false" />
+    <Property Name="ap_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ap_fa_icon" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ap_view_slug" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ap_view_link" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ap_add_slug" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ap_add_link" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ap_edit_slug" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ap_edit_link" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ap_delete_slug" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ap_delete_link" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="_sort" Type="int" Nullable="false" />
+    <Property Name="_parent_id" Type="int" Nullable="false" />
+    <Property Name="modified" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="created" Type="datetime2" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="admin_permissions">
+    <Key>
+      <PropertyRef Name="perm_id" />
+    </Key>
+    <Property Name="perm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="perm_profile" Type="int" Nullable="false" />
+    <Property Name="perm_page" Type="int" Nullable="false" />
+    <Property Name="perm_view" Type="int" Nullable="false" />
+    <Property Name="perm_add" Type="int" Nullable="false" />
+    <Property Name="perm_edit" Type="int" Nullable="false" />
+    <Property Name="perm_delete" Type="int" Nullable="false" />
+    <Property Name="perm_all" Type="int" Nullable="false" />
+    <Property Name="modified" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="created" Type="datetime2" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="admin_permissions_profile">
+    <Key>
+      <PropertyRef Name="prof_id" />
+    </Key>
+    <Property Name="prof_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prof_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="_sort" Type="int" Nullable="false" />
+    <Property Name="modified" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="created" Type="datetime2" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="areas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nm" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nmBn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="arID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="banner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="position" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="image" Type="varchar(max)" Nullable="false" />
+    <Property Name="link" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="image_name" Type="varchar(max)" Nullable="false" />
+    <Property Name="ord" Type="int" Nullable="false" />
+    <Property Name="link" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ci_sessions">
+    <Key>
+      <PropertyRef Name="session_id" />
+    </Key>
+    <Property Name="session_id" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="user_agent" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="last_activity" Type="bigint" Nullable="false" />
+    <Property Name="user_data" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nm" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nmBn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="cd" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="cntId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dashboard">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="about" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="customer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="return_policy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="how" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="faq" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="background" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="header" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="logo" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fa_icon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="value" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order_list">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="qty" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order_num">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="visitor_id" Type="int" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="created" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ptype" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mtype" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="cnt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ct" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="area" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="addr" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="_sort" Type="int" Nullable="false" />
+    <Property Name="topic" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="parent_id" Type="bigint" Nullable="false" />
+    <Property Name="background_color" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="body_sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="image" Type="varchar(max)" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="_sort" Type="int" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="body" Type="varchar(max)" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" Nullable="false" />
+    <Property Name="pubdate" Type="date" Nullable="false" />
+    <Property Name="parent_id" Type="int" Nullable="false" />
+    <Property Name="code" Type="varchar(max)" Nullable="false" />
+    <Property Name="review" Type="varchar(max)" Nullable="false" />
+    <Property Name="discount" Type="int" Nullable="false" />
+    <Property Name="price" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="oprice" Type="int" Nullable="false" />
+    <Property Name="sale" Type="int" Nullable="false" />
+    <Property Name="_view" Type="int" Nullable="false" />
+    <Property Name="_bought" Type="int" Nullable="false" />
+    <Property Name="publisher" Type="int" Nullable="false" />
+    <Property Name="sales_type" Type="int" Nullable="false" />
+    <Property Name="_status" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="slide_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="_sort" Type="int" Nullable="false" />
+    <Property Name="slider_num" Type="int" Nullable="false" />
+    <Property Name="title1" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="title2" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="auth_level" Type="int" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="visitor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="108" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ip" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="modified" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="created" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="active" Type="datetime2" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MSSsmaDmNCKeyColumns">
+    <Key>
+      <PropertyRef Name="object_id" />
+      <PropertyRef Name="key_name" />
+      <PropertyRef Name="key_type" />
+      <PropertyRef Name="key_column_id" />
+    </Key>
+    <Property Name="object_id" Type="int" Nullable="false" />
+    <Property Name="key_name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="key_type" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="key_column_id" Type="int" Nullable="false" />
+    <Property Name="index_column_id" Type="int" />
+    <Property Name="is_disabled" Type="bit" />
+    <Property Name="referenced_object_id" Type="int" />
+    <Property Name="delete_referential_action" Type="tinyint" />
+    <Property Name="update_referential_action" Type="tinyint" />
+    <Property Name="is_not_for_replication" Type="bit" />
+    <Property Name="is_not_trusted" Type="bit" />
+    <Property Name="referenced_column_id" Type="int" />
+  </EntityType>
+  <EntityType Name="MSSsmaDmTables">
+    <Key>
+      <PropertyRef Name="object_id" />
+    </Key>
+    <Property Name="object_id" Type="int" Nullable="false" />
+    <Property Name="schema_id" Type="int" Nullable="false" />
+    <Property Name="status" Type="tinyint" />
+    <Property Name="dm_start_time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="eAdminDBModelStoreContainer">
+    <EntitySet Name="admin_ci_sessions" EntityType="Self.admin_ci_sessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="admin_page" EntityType="Self.admin_page" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="admin_permissions" EntityType="Self.admin_permissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="admin_permissions_profile" EntityType="Self.admin_permissions_profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="areas" EntityType="Self.areas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="banner" EntityType="Self.banner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="brand" EntityType="Self.brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ci_sessions" EntityType="Self.ci_sessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cts" EntityType="Self.cts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dashboard" EntityType="Self.dashboard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fa_icon" EntityType="Self.fa_icon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_list" EntityType="Self.order_list" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_num" EntityType="Self.order_num" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pages" EntityType="Self.pages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_image" EntityType="Self.product_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="slide_image" EntityType="Self.slide_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="visitor" EntityType="Self.visitor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MSSsmaDmNCKeyColumns" EntityType="Self.MSSsmaDmNCKeyColumns" Schema="m2ss" store:Type="Tables" />
+    <EntitySet Name="MSSsmaDmTables" EntityType="Self.MSSsmaDmTables" Schema="m2ss" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

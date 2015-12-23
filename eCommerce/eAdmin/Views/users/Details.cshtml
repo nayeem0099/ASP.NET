@@ -1,0 +1,96 @@
+﻿@model eAdmin.Models.user
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="pull-right">
+            <a data-original-title="Back to List"
+               href="@Url.Action("Index")"
+               data-toggle="tooltip" title="" class="btn btn-primary">
+                <i class="fa fa-reply"></i>
+            </a>
+            <a data-original-title="Edit"
+               href="@Url.Action("Edit", new { id = Model.id })"
+               data-toggle="tooltip" title="" class="btn btn-primary">
+                <i class="fa fa-pencil"></i>
+            </a>
+        </div>
+        <h1>Users</h1>
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Dashboard", "dashboard")</li>
+            <li>@Html.ActionLink("Users", "Index")</li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <i class="fa fa-list"></i>Details
+            </h3>
+        </div>
+
+        <div class="panel-body">
+            <div class="table-responsive" style="overflow-x: visible;">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.email)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.email)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.name)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.auth_level)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.auth_level)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.created)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.created)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.modified)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.modified)
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
